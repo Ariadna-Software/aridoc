@@ -1,0 +1,9 @@
+Fecha / Hora : 09/09/2014 - 09:59
+
+
+
+Nº: 2
+Cadena de archivo NO VALIDA.
+Errores: 
+  NO EXIS - C:\Prueba.txt
+

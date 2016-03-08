@@ -1,0 +1,17 @@
+
+
+
+
+
+ALTER TABLE `plantilla` ADD `carpeta` SMALLINT UNSIGNED DEFAULT "0" NOT NULL;
+ALTER TABLE `plantilla` CHANGE `codigo` `codigo` TINYINT(3)  UNSIGNED DEFAULT "0" NOT NULL;
+ALTER TABLE `plantilla` ADD PRIMARY KEY (codigo);
+
+
+
+CREATE TABLE actualiza (
+	codigo TINYINT (3) UNSIGNED DEFAULT 0 NOT NULL,
+  fecha DATETIME   NOT NULL,
+ 	PRIMARY KEY(codigo)
+) COMMENT = "Refreco carpetas" TYPE = MyISAM;
+INSERT INTO actualiza (codigo, fecha) VALUES (1, '2005-01-01 01:01:01');

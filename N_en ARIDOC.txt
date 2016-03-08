@@ -1,0 +1,151 @@
+
+
+
+
+
+ALTER TABLE `plantilla` ADD `carpeta` SMALLINT UNSIGNED DEFAULT "0" NOT NULL;
+ALTER TABLE `plantilla` CHANGE `codigo` `codigo` TINYINT(3)  UNSIGNED DEFAULT "0" NOT NULL;
+ALTER TABLE `plantilla` ADD PRIMARY KEY (codigo);
+
+'COJER:  minilogo.dat
+
+CREATE TABLE actualiza (
+	codigo TINYINT (3) UNSIGNED DEFAULT 0 NOT NULL,
+  fecha DATETIME   NOT NULL,
+ 	PRIMARY KEY(codigo)
+) COMMENT = "Refreco carpetas" TYPE = MyISAM;
+INSERT INTO actualiza (codigo, fecha) VALUES (1, '2005-01-01 01:01:01');
+
+
+CREATE TABLE maildestext (
+  codmail int(10) NOT NULL default '0',
+  nombre varchar(255) NOT NULL default '0',
+  mail varchar(255) NOT NULL default '0',
+  PRIMARY KEY  (codmail)
+) TYPE=MyISAM COMMENT='Destinatarios externos'
+CREATE TABLE maildestexth (
+  codmail int(10) NOT NULL default '0',
+  nombre varchar(255) NOT NULL default '0',
+  mail varchar(255) NOT NULL default '0',
+  PRIMARY KEY  (codmail)
+) TYPE=MyISAM COMMENT='Destinatarios externos'
+
+
+ALTER TABLE `extension` ADD `Deshabilitada` TINYINT UNSIGNED DEFAULT "0";
+
+ALTER TABLE `preferenciapersonal` ADD `mailInicio` TINYINT UNSIGNED DEFAULT "0";
+
+ALTER TABLE `preferenciapersonal` ADD `mailFiltro` TINYINT UNSIGNED DEFAULT "0";
+
+ALTER TABLE `preferenciapersonal` ADD `mailPasarHCO` TINYINT UNSIGNED DEFAULT "0";
+
+CREATE TABLE ContadorAr (
+   codmail int(11) NOT NULL
+)  TYPE = InnoDB
+
+
+CREATE TABLE mailch (
+  codmail int(10) NOT NULL default '0',
+  origen smallint(3) NOT NULL default '0',
+  destino smallint(3) NOT NULL default '0',
+  leido tinyint(3) NOT NULL default '0',
+  email tinyint(3) NOT NULL default '0',
+  tipo tinyint(3) NOT NULL default '0',
+  PRIMARY KEY  (codmail,origen,destino)
+) TYPE=MyISAM COMMENT='Cabecera de mensajeria';
+
+
+
+#
+# Table structure for table 'maile'
+#
+
+CREATE TABLE maileh (
+  codmail int(10) NOT NULL default '0',
+  origen smallint(3) NOT NULL default '0',
+  email tinyint(3) NOT NULL default '0',
+  tipo tinyint(3) NOT NULL default '0',
+  textoPara varchar(255) NOT NULL default '',
+  Destinatarios varchar(255) NOT NULL default '',
+  PRIMARY KEY  (codmail,origen)
+) TYPE=MyISAM COMMENT='Mensajes enviados';
+
+
+
+
+
+CREATE TABLE `mailtipo` (
+ tipo TINYINT (3)  NOT NULL, 
+ Descripcion varchar(35) NOT NULL,
+ color varchar(15) ,
+PRIMARY KEY(tipo))  COMMENT = "Tipos mensaje" TYPE = MyISAM
+
+CREATE TABLE `maile` (
+`codmail` INT (10) DEFAULT '0' NOT NULL, 
+`origen` SMALLINT (3) DEFAULT '0' NOT NULL,
+`email` TINYINT (3) DEFAULT '0' NOT NULL, 
+`tipo` TINYINT (3) DEFAULT '0' NOT NULL, 
+PRIMARY KEY(`codmail`,`origen`))  COMMENT = "Mensajes enviados" TYPE = MyISAM
+
+
+
+CREATE TABLE `mailc` (`codmail` INT (10) DEFAULT '0' NOT NULL, 
+ `origen` SMALLINT (3) DEFAULT '0' NOT NULL,
+ `destino` SMALLINT (3) DEFAULT '0' NOT NULL,
+ `leido` TINYINT (3) DEFAULT '0' NOT NULL,
+ `email` TINYINT (3) DEFAULT '0' NOT NULL,
+ `tipo` TINYINT (3) DEFAULT '0' NOT NULL,
+  PRIMARY KEY(`codmail`,`origen`,`destino`))  COMMENT = "Cabecera de mensajeria" TYPE = MyISAM
+
+
+CREATE TABLE `maill` (`codmail` INT (3) DEFAULT '0' NOT NULL, `asunto` VARCHAR (200) DEFAULT '0', `Texto` TEXT, PRIMARY KEY(`codmail`))  COMMENT = "lineas mensajeria" TYPE = MyISAM
+
+
+
+ALTER TABLE `maill` ADD `Fecha` DATE NOT NULL;
+
+
+ALTER TABLE `usuarios` ADD `maildir` VARCHAR(100) ;
+ALTER TABLE `usuarios` ADD `mailserver`  VARCHAR(100) ;
+ALTER TABLE `usuarios` ADD `mailuser` VARCHAR(100) ;
+ALTER TABLE `usuarios` ADD `mailpwd` VARCHAR(100) ;
+
+
+
+CREATE TABLE `Plantilla` (
+`codigo` TINYINT (3) UNSIGNED DEFAULT '0', 
+`Descripcion` TINYINT (3) UNSIGNED DEFAULT '0', 
+`tipo` TINYINT (3) UNSIGNED DEFAULT '0', 
+lectura INT DEFAULT 0,
+`fecha` TINYINT (3) UNSIGNED DEFAULT '0')  
+COMMENT = "Plantillas"
+
+
+ALTER TABLE `extension` ADD `Nuevo` TINYINT UNSIGNED DEFAULT "0" NOT NULL;
+ALTER TABLE `extension` ADD `OfertaPrint` VARCHAR(100) ;
+ALTER TABLE `extension` ADD `OfertaExe` VARCHAR(100) ;
+ALTER TABLE `equipos` ADD `ExeIntegra` VARCHAR(255) ;
+
+
+CREATE TABLE tmpintegra (
+  codusu tinyint(3) unsigned NOT NULL default '0',
+  codigo int(10) unsigned NOT NULL default '0',
+  carpeta varchar(100) NOT NULL default '',
+  campo1 varchar(50) NOT NULL default '0',
+  campo2 varchar(50) default NULL,
+  campo3 varchar(50) default NULL,
+  campo4 varchar(50) default NULL,
+  fecha1 date default NULL,
+  fecha2 date default NULL,
+  fecha3 date default NULL,
+  importe1 decimal(14,2) default NULL,
+  importe2 decimal(14,2) default NULL,
+  observa text default NULL,
+  NombreArchivo varchar(100) NOT NULL default '',
+  correcto tinyint(3) unsigned NOT NULL default '0',
+  PRIMARY KEY  (codigo,codusu)
+) TYPE=MyISAM COMMENT='Integraciones ariadna';
+
+
+ALTER TABLE `extension` ADD `Aparecemenu` TINYINT UNSIGNED DEFAULT "0";
+
